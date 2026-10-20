@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Никита и Муса">
+    <title>Моя вёрстка VLAN</title>
+    
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .xml-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; }
+        .xml-table th, .xml-table td { border: 1px solid #ccc; padding: 10px; text-align: left; color: #333; }
+        .xml-table tr.cd-row { cursor: pointer; transition: background 0.2s; }
+        .xml-table tr.cd-row:hover { background-color: #f0f8ff; }
+        .album-info-card { margin-top: 15px; padding: 15px; border: 2px solid blue; background: #fff; border-radius: 5px; color: #333; }
+    </style>
+</head>
+<body>
+
+    
+    <div class="anim-top" style="display: flex; align-items: center; gap: 15px;">
+        <h1 style="margin: 0;">Привет!</h1>
+        <img src="cat.gif" alt="Котик" style="height: 60px; width: auto;">
+    </div>
+    
+    <hr style="border-top: 2px solid blue;">
+    
+    <h3>Ссылки на Rutube</h3>
+    <ul>
+        <li><a href="https://rutube.ru">Основы VLAN</a></li>
+        <li><a href="https://rutube.ru">Что такое VLAN?</a></li>
+        <li><a href="https://rutube.ru">Настройка VLAN</a></li>
+    </ul>
+
+    <h3>Внутренние страницы</h3>
+    <ol>
+        <li><a href="str1.html" target="_blank">str1.html</a></li>   
+        <li><a href="str2.html" target="_blank">str2.html</a></li>
+        <li><a href="str3.html" target="_blank">str3.html</a></li>
+        
+        <li><a href="color.html" target="_blank">color.html (Динамическая смена цвета)</a></li>
+    </ol>
+    
+    <img src="vlan.jpg" alt="VLAN схема">
+
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="#">Поддержка</a></li>
+            <li class="dropdown">
+                <a href="#">Выпадающий список</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Комментарии</a></li>
+                    <li><a href="#">Ссылки на другие проекты</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Типо ссылка на рутуб</a></li>
+        </ul>
+    </nav>
+
+    <main class="content-wrapper">
+        <div class="image-box">
+            <img src="vlan4.jpg" class="styled-img" alt="Интерфейс VLAN">
+        </div>
+
+        <h1 class="main-title">Добро пожаловать на наш сайт</h1>
+        <p class="subtitle-text">Заполните форму ниже для прохождения регистрации в системе.</p>
+
+        <div class="geo-block" style="margin-top: 20px; margin-bottom: 20px;">
+            <button onclick="getLocation()">Показать мою локацию</button>
+            <p id="coordinates"></p>
+        </div>
+
+        <form class="reg-form">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Ваш e-mail" required>
+            <input type="tel" placeholder="Ваш телефон">
+            <input type="password" placeholder="Пароль" required>
+            <input type="password" placeholder="Пароль еще раз" required>
+            <button type="submit" class="submit-btn">Регистрация</button>
+        </form>
+
+        <div class="btn-container">
+            <a href="index.html" class="home-link"><em class="home-btn-text">Войти</em></a>
+        </div>
+
+        
+        <div class="xml-block" style="margin-top: 40px; padding: 15px; border: 1px solid #1e90ff; background: rgba(255,255,255,0.6);">
+            <h2>Таблица музыкальных CD (XML)</h2>
+            <p style="font-size: 0.9em; color: #555;">Нажмите на любую строку с CD, чтобы увидеть полную информацию об альбоме Майкла Джексона.</p>
+            <table class="xml-table">
+                <thead>
+                    <tr>
+                        <th>Исполнитель (Artist)</th>
+                        <th>Альбом (Title)</th>
+                    </tr>
+                </thead>
+                <tbody id="xml-table-body">
+                    <tr><td colspan="2">Загрузка данных таблицы...</td></tr>
+                </tbody>
+            </table>
+            <div id="album-details" style="display: none;" class="album-info-card"></div>
+        </div>
+
+        
+        <div class="fetch-block" style="margin-top: 40px; padding: 15px; border: 1px dashed blue; background-color: #f9f9f9;">
+            <h3 style="margin-top: 0;">Сообщение из файла:</h3>
+            <p id="fetch-output" style="font-weight: bold; color: green; margin: 0;">Загрузка сообщения...</p>
+        </div>
+        
+        
+        <div class="anim-on-scroll" style="margin-top: 40px;">
+            <h2>Пака</h2>
+            <img src="seroga.png" alt="Шапка сайта" style="display: block; max-width: 100%; height: auto;">
+        </div>
+    </main>
+
+    
+    <script>
+    function getLocation() {
+        const output = document.getElementById("coordinates");
+        if (!navigator.geolocation) return;
+        navigator.geolocation.getCurrentPosition((position) => {
+            output.textContent = `Широта: ${position.coords.latitude}°, Долгота: ${position.coords.longitude}°`;
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const scrollElements = document.querySelectorAll('.anim-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('anim-active');
+                }
+            });
+        }, { threshold: 0.15 });
+        scrollElements.forEach(el => observer.observe(el));
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const outputElement = document.getElementById("fetch-output");
+        fetch('fetch_api.txt')
+            .then(res => res.text())
+            .then(text => { outputElement.textContent = text; });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "CD.XML", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const xmlDoc = xhr.responseXML;
+                const cds = xmlDoc.getElementsByTagName("cd");
+                let tableHTML = "";
+                for (let i = 0; i < cds.length; i++) {
+                    const artist = cds[i].getElementsByTagName("artist")[0].textContent;
+                    const title = cds[i].getElementsByTagName("title")[0].textContent;
+                    const year = cds[i].getElementsByTagName("year")[0].textContent;
+                    const genre = cds[i].getElementsByTagName("genre")[0].textContent;
+                    tableHTML += `<tr class="cd-row" onclick="showAlbumDetails('${title}','${artist}','${year}','${genre}')"><td>${artist}</td><td>${title}</td></tr>`;
+                }
+                document.getElementById("xml-table-body").innerHTML = tableHTML;
+            }
+        };
+        xhr.send();
+    });
+
+    function showAlbumDetails(title, artist, year, genre) {
+        const detailsCard = document.getElementById("album-details");
+        detailsCard.style.display = "block";
+        detailsCard.innerHTML = `<h3>💿 Информация об альбоме:</h3><p><strong>Название:</strong> ${title}</p><p><strong>Исполнитель:</strong> ${artist}</p><p><strong>Год:</strong> ${year}</p><p><strong>Жанр:</strong> ${genre}</p>`;
+    }
+    </script>
+</body>
+</html>

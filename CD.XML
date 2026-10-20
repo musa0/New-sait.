@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <cd>
+        <title>Thriller</title>
+        <artist>Michael Jackson</artist>
+        <year>1982</year>
+        <genre>Pop / Funk / Rock</genre>
+    </cd>
+    <cd>
+        <title>Bad</title>
+        <artist>Michael Jackson</artist>
+        <year>1987</year>
+        <genre>Pop / Dance / Rock</genre>
+    </cd>
+    <cd>
+        <title>Dangerous</title>
+        <artist>Michael Jackson</artist>
+        <year>1991</year>
+        <genre>New Jack Swing / Pop</genre>
+    </cd>
+    <cd>
+        <title>Off the Wall</title>
+        <artist>Michael Jackson</artist>
+        <year>1979</year>
+        <genre>Disco / Pop / Funk</genre>
+    </cd>
+<cd>
+        <title>Шёлк</title>
+        <artist>Ваня Дмитриенко</artist>
+        <year>2025</year>
+        <genre>Pop</genre>
+    </cd>
+<cd>
+        <title>Поезда</title>
+        <artist>Женя Трафимов</artist>
+        <year>2023</year>
+        <genre>Rock/Pop</genre>
+    </cd>
+<cd>
+        <title>Толпы</title>
+        <artist>MadKit</artist>
+        <year>2023</year>
+        <genre>Rock/Pop</genre>
+    </cd>
+</catalog>

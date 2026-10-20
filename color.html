@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Динамическая смена цвета</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .color-btn {
+            padding: 12px 24px;
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+        .color-btn:hover {
+            background-color: #218838;
+        }
+        .color-info {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <button class="color-btn" onclick="changeBackground()">Смена фона</button>
+        
+       
+        <div class="color-info">
+            Сейчас на фоне цвет: <span id="color-code">#ffffff</span>
+        </div>
+        
+        <br>
+        <a href="html_1.index.html" class="back-link">← Вернуться на главную страницу</a>
+    </div>
+
+    <script>
+    function changeBackground() {
+        
+        const letters = '0123456789abcdef';
+        let color = '#';
+        
+        
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        
+       
+        document.body.style.backgroundColor = color;
+        
+       
+        document.getElementById('color-code').textContent = color;
+    }
+    </script>
+
+</body>
+</html>
